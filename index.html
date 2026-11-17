@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#050d18">
+
+<title>J.A.R.V.I.S.</title>
+
+<style>
+
+:root {
+
+  --blue: #54d7ff;
+
+  --background: #050d18;
+
+  --panel: rgba(8,30,48,.85);
+
+  --muted: #709bad;
+
+}
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  min-height: 100dvh;
+
+  background:
+
+    radial-gradient(ellipse at center, #10334c 0%, #071725 48%, #030811 100%);
+
+  color: #d8f7ff;
+
+  font-family: "Avenir Next", Arial, sans-serif;
+
+  overflow-x: hidden;
+
+}
+
+body:before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+
+    linear-gradient(#39bce911 1px, transparent 1px),
+
+    linear-gradient(90deg, #39bce911 1px, transparent 1px);
+
+  background-size: 35px 35px;
+
+}
+
+header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #39bce944;
+
+  position: relative;
+
+}
+
+.brand {
+
+  font-size: 19px;
+
+  letter-spacing: 5px;
+
+  color: var(--blue);
+
+}
+
+.status {
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: #71e8c2;
+
+}
+
+main {
+
+  width: min(1100px, 94%);
+
+  margin: auto;
+
+  padding: 25px 0;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1.5fr 1fr;
+
+  gap: 15px;
+
+}
+
+.panel {
+
+  background: var(--panel);
+
+  border: 1px solid #3bc9ef55;
+
+  box-shadow: 0 0 20px #16a9df12;
+
+  padding: 15px;
+
+  margin-bottom: 15px;
+
+}
+
+.heading {
+
+  color: var(--blue);
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid #39bce933;
+
+}
+
+.metric {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 5px;
+
+  margin-top: 17px;
+
+  font-size: 10px;
+
+  color: var(--muted);
+
+}
+
+.metric strong {
+
+  color: #b9eaf7;
+
+}
+
+.hero {
+
+  text-align: center;
+
+}
+
+.reactor {
+
+  width: min(260px, 70vw);
+
+  aspect-ratio: 1;
+
+  margin: 25px auto;
+
+  position: relative;
+
+  display: grid;
+
+  place-items: center;
+
+}
+
+.ring {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 2px solid #55d9ff99;
+
+}
+
+.r1 {
+
+  inset: 0;
+
+  border-style: dashed;
+
+  animation: spin 35s linear infinite;
+
+}
+
+.r2 {
+
+  inset: 12%;
+
+  border-left-color: transparent;
+
+  border-right-color: transparent;
+
+  animation: spin 15s linear infinite reverse;
+
+}
+
+.r3 {
+
+  inset: 24%;
+
+  box-shadow: 0 0 30px #39caff55;
+
+}
+
+.core {
+
+  width: 40%;
+
+  height: 40%;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background: radial-gradient(circle, #c7faff, #37bce8 40%, #07436b);
+
+  box-shadow: 0 0 35px #42d5ff;
+
+  color: white;
+
+  font-size: 55px;
+
+  font-weight: 200;
+
+}
+
+@keyframes spin {
+
+  to { transform: rotate(360deg); }
+
+}
+
+h1 {
+
+  font-weight: 300;
+
+  font-size: clamp(24px, 4vw, 36px);
+
+}
+
+h1 span { color: var(--blue); }
+
+.subtitle {
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+
+}
+
+.messages {
+
+  height: 190px;
+
+  overflow-y: auto;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  padding: 12px 0;
+
+}
+
+.message { margin-bottom: 15px; }
+
+.message b {
+
+  display: block;
+
+  color: var(--blue);
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 5px;
+
+}
+
+.user b { color: #e5bd7d; }
+
+input {
+
+  width: 100%;
+
+  background: #030c16;
+
+  border: 1px solid #39bce955;
+
+  color: white;
+
+  padding: 13px;
+
+  outline: none;
+
+  font-size: 13px;
+
+}
+
+button {
+
+  background: #0c3853;
+
+  border: 1px solid #52d7ff88;
+
+  color: #c9f5ff;
+
+  padding: 13px;
+
+  width: 100%;
+
+  margin-top: 8px;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+}
+
+button:active { background: #17638b; }
+
+button.secondary {
+
+  background: transparent;
+
+  border-color: #39bce944;
+
+}
+
+.orb {
+
+  width: 85px;
+
+  height: 85px;
+
+  border: 1px solid var(--blue);
+
+  border-radius: 50%;
+
+  margin: 20px auto;
+
+  display: grid;
+
+  place-items: center;
+
+  color: var(--blue);
+
+  font-size: 30px;
+
+  box-shadow: 0 0 25px #39bce955;
+
+}
+
+body.speaking .core,
+
+body.listening .orb {
+
+  animation: pulse 1s infinite alternate;
+
+}
+
+@keyframes pulse {
+
+  to { transform: scale(1.12); filter: brightness(1.5); }
+
+}
+
+footer {
+
+  text-align: center;
+
+  padding: 20px;
+
+  color: #50798a;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+}
+
+@media(max-width:750px) {
+
+  main { display: flex; flex-direction: column; }
+
+  .hero { order: 0; }
+
+  .center { order: 1; }
+
+  .left, .right { order: 2; }
+
+  .reactor { width: 210px; }
+
+  .left { display: none; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="brand">J.A.R.V.I.S.</div>
+
+  <div class="status">● INTERFACE ONLINE</div>
+
+</header>
+
+<main>
+
+  <section class="left">
+
+    <div class="panel">
+
+      <div class="heading">SYSTEM STATUS</div>
+
+      <div class="metric">CORE <strong>STANDBY</strong></div>
+
+      <div class="metric">VOICE <strong>READY</strong></div>
+
+      <div class="metric">AI BRAIN <strong>OFFLINE</strong></div>
+
+      <div class="metric">MODE <strong>PROTOTYPE</strong></div>
+
+    </div>
+
+    <div class="panel">
+
+      <div class="heading">PERSONALITY</div>
+
+      <div class="metric">LANGUAGE <strong>EN-GB</strong></div>
+
+      <div class="metric">TONE <strong>FORMAL</strong></div>
+
+      <div class="metric">ADDRESS <strong>SIR</strong></div>
+
+    </div>
+
+  </section>
+
+  <section class="center">
+
+    <div class="hero">
+
+      <div class="heading">PERSONAL ASSISTANT SYSTEM</div>
+
+      <div class="reactor">
+
+        <div class="ring r1"></div>
+
+        <div class="ring r2"></div>
+
+        <div class="ring r3"></div>
+
+        <div class="core">J</div>
+
+      </div>
+
+      <h1>Good evening, <span>sir.</span></h1>
+
+      <p class="subtitle">
+
+        J.A.R.V.I.S. interface operational.<br>
+
+        Awaiting your instructions.
+
+      </p>
+
+    </div>
+
+    <div class="panel">
+
+      <div class="heading">COMMUNICATION CHANNEL</div>
+
+      <div class="messages" id="messages">
+
+        <div class="message">
+
+          <b>J.A.R.V.I.S.</b>
+
+          Good evening, sir. All interface systems are operational.
+
+          My full AI brain is awaiting integration.
+
+        </div>
+
+      </div>
+
+      <input id="input" placeholder="Enter your message...">
+
+      <button onclick="sendMessage()">TRANSMIT MESSAGE ↗</button>
+
+    </div>
+
+  </section>
+
+  <section class="right">
+
+    <div class="panel">
+
+      <div class="heading">VOICE CONTROL</div>
+
+      <div class="orb">◖</div>
+
+      <div class="subtitle" style="text-align:center" id="voiceStatus">
+
+        VOICE STANDBY
+
+      </div>
+
+      <button onclick="listen()">ACTIVATE MICROPHONE</button>
+
+      <button class="secondary" onclick="stopVoice()">STOP SPEAKING</button>
+
+      <button class="secondary" onclick="testVoice()">TEST VOICE</button>
+
+    </div>
+
+    <div class="panel">
+
+      <div class="heading">QUICK COMMANDS</div>
+
+      <button onclick="quick('What can you do?')">CAPABILITIES</button>
+
+      <button onclick="quick('What is your status?')">SYSTEM STATUS</button>
+
+      <button onclick="quick('Tell me about our project.')">PROJECT BRIEF</button>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+
+  J.A.R.V.I.S. DEVELOPMENT BUILD 0.1.0
+
+</footer>
+
+<script>
+
+const input = document.getElementById("input");
+
+const messages = document.getElementById("messages");
+
+function addMessage(name, text, type) {
+
+  const div = document.createElement("div");
+
+  div.className = "message " + (type || "");
+
+  
+
+  const label = document.createElement("b");
+
+  label.textContent = name;
+
+  
+
+  const content = document.createElement("div");
+
+  content.textContent = text;
+
+  
+
+  div.append(label, content);
+
+  messages.appendChild(div);
+
+  messages.scrollTop = messages.scrollHeight;
+
+}
+
+function getReply(text) {
+
+  const q = text.toLowerCase();
+
+  if (q.includes("hello") || q.includes("hi")) {
+
+    return "Good evening, sir. It is a pleasure to be of assistance.";
+
+  }
+
+  if (q.includes("capabilit")) {
+
+    return "My interface currently supports text communication, speech synthesis and experimental microphone input. My full AI capabilities are awaiting integration.";
+
+  }
+
+  if (q.includes("status")) {
+
+    return "Interface online. Voice systems ready. Local AI brain not yet connected.";
+
+  }
+
+  if (q.includes("project")) {
+
+    return "We are developing a personal AI assistant with its own interface, voice, memory and locally hosted intelligence. The next milestone is your Windows PC.";
+
+  }
+
+  if (q.includes("who are you") || q.includes("your name")) {
+
+    return "I am J.A.R.V.I.S., Just A Rather Very Intelligent System. Your personal AI assistant.";
+
+  }
+
+  return "Understood, sir. I have received your instruction. My full reasoning engine will become available when we connect the AI brain.";
+
+}
+
+function sendMessage() {
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  addMessage("YOU", text, "user");
+
+  input.value = "";
+
+  const reply = getReply(text);
+
+  setTimeout(() => {
+
+    addMessage("J.A.R.V.I.S.", reply);
+
+    speak(reply);
+
+  }, 300);
+
+}
+
+function quick(text) {
+
+  input.value = text;
+
+  sendMessage();
+
+}
+
+input.addEventListener("keydown", e => {
+
+  if (e.key === "Enter") sendMessage();
+
+});
+
+function getVoice() {
+
+  const voices = speechSynthesis.getVoices();
+
+  return voices.find(v => v.lang === "en-GB" &&
+
+    /male|daniel|george|oliver|arthur/i.test(v.name))
+
+    || voices.find(v => v.lang === "en-GB")
+
+    || voices.find(v => v.lang.startsWith("en"));
+
+}
+
+function speak(text) {
+
+  if (!("speechSynthesis" in window)) {
+
+    document.getElementById("voiceStatus").textContent =
+
+      "VOICE NOT SUPPORTED";
+
+    return;
+
+  }
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = "en-GB";
+
+  utterance.rate = 0.94;
+
+  utterance.pitch = 0.92;
+
+  const voice = getVoice();
+
+  if (voice) utterance.voice = voice;
+
+  utterance.onstart = () => {
+
+    document.body.classList.add("speaking");
+
+    document.getElementById("voiceStatus").textContent = "SPEAKING";
+
+  };
+
+  utterance.onend = () => {
+
+    document.body.classList.remove("speaking");
+
+    document.getElementById("voiceStatus").textContent = "VOICE STANDBY";
+
+  };
+
+  speechSynthesis.speak(utterance);
+
+}
+
+function testVoice() {
+
+  speak("Good evening, sir. J.A.R.V.I.S. voice systems are ready.");
+
+}
+
+function stopVoice() {
+
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+
+  document.body.classList.remove("speaking");
+
+  document.getElementById("voiceStatus").textContent = "VOICE STANDBY";
+
+}
+
+function listen() {
+
+  const SpeechRecognition =
+
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+
+    alert("Speech recognition is not supported in this browser. Please use the text input for now.");
+
+    return;
+
+  }
+
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = "en-GB";
+
+  recognition.interimResults = false;
+
+  recognition.onstart = () => {
+
+    document.body.classList.add("listening");
+
+    document.getElementById("voiceStatus").textContent = "LISTENING";
+
+  };
+
+  recognition.onresult = event => {
+
+    input.value = event.results[0][0].transcript;
+
+    sendMessage();
+
+  };
+
+  recognition.onerror = () => {
+
+    alert("Microphone unavailable. Please check browser permissions.");
+
+  };
+
+  recognition.onend = () => {
+
+    document.body.classList.remove("listening");
+
+    document.getElementById("voiceStatus").textContent = "VOICE STANDBY";
+
+  };
+
+  recognition.start();
+
+}
+
+</script>
+
+</body>
+
+</html>
